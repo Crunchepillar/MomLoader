@@ -1,6 +1,8 @@
 # Project Overview:
 MomLog is a modloader for the game Hard Times on steam. It patches some functions in the main Assembly-CSharp to add in an event-driven modding framework that can dynamically load assemblies from the mod directory without interfering with the existing data-driven mod structure.
 
+https://github.com/Crunchepillar/MomLoader
+
 # Installation
 
 Installing MomLoader is a quick process.
