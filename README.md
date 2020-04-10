@@ -1,7 +1,7 @@
-#Project Overview:
+# Project Overview:
 MomLog is a modloader for the game Hard Times on steam. It patches some functions in the main Assembly-CSharp to add in an event-driven modding framework that can dynamically load assemblies from the mod directory without interfering with the existing data-driven mod structure.
 
-#Installation
+# Installation
 
 Installing MomLoader is a quick process.
 
@@ -14,13 +14,13 @@ Grab a release from the releases page and then follow these short instructions
 
 Okay you're done. Close Hard Times and relaunch to let MomLoader do her thing. You should see a different version number displayed in the top left. Instead of saying "Hard Times v x.x.x: Build xxxxx" it will say "Hard Times v x.x.x+QT-x.x.x" to indicate the mod has been loaded.
 
-#F.A.Q
+# F.A.Q
 
 Nothing here :[
 
-#MomLoader ChangeLog
+# MomLoader ChangeLog
 
-##MomLoader Version 0.0.3
+## MomLoader Version 0.0.3
 * Added two new types of Events: Workers and Services
     * Services take over the creation of base classes (eg: BaseItem or Shop) to modify its properties or even return a totally new object
     * Workers modify any new instances of a base class but cannot replace it while working
@@ -28,7 +28,7 @@ Nothing here :[
     * Supported Workers: BaseItem, Shop, BaseNPCManager, BaseCopManager
         * Note: Mods can request to be Workers for any type and emit a request for Workers of any type
 
-##MomLoader Version 0.0.2
+## MomLoader Version 0.0.2
 * Loads all Assemblies in the Mods/Assemblies folder and activates a new instance of (dllName).ModMain
 * Mods register for which updates they want to recieve from the base game and are passed data relevant to that update
     * UpdateOnNewGame Added - Updates when a new game is started either from "New Game" or "Load Game"
