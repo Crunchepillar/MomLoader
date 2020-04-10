@@ -1,7 +1,7 @@
-#ShopManager Plugin ChangeLog
+# ShopManager Plugin ChangeLog
 
 
-##ShopManager Version 0.0.1
+## ShopManager Version 0.0.1
 * Getting caught stealing closes the shop window
 * Shops won't open the shop window for players with caught_stealing_effect
 * Robbing a shop with a crowbar no longer calls ShopInventory.DropAllItemsToTheGround.
