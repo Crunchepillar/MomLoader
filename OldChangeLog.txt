@@ -1,0 +1,75 @@
+Obsolete MamaMod Changelog Below (These changes do not reflect the current state of the project)
+
+Version 0.1.2
+	Updated to support HardTimes 0.1.4-release2 (Apr 8th steam update)
+		This Obsoleted some of the Shops changes
+	Items inside containers are now properly converted into their useable item versions on game load and are useable inside containers
+	Medical items added to useable item types
+	Known Issue: Items inside furniture revert to non-useable type after loading a savegame.
+		This is because the player inventory is the only one hooked up right now. Might be possible to sneak into the furniture array after game start
+		The above fix still wouldn't help lose containers on the ground
+
+Version 0.1.1
+	Features that were previously available in-line assembly-csharp are being ported (where possible) to the new patches/overrides methods
+		The Changelist at the top of the log will have what features are actually working.
+		Previous version changes will be preserved in the logs but will not appear in game.
+	Certain items can be used directly in the inventory by clicking on their icon instead of use button
+		Currently Food, Drugs, Cleaning Items, Containers, and Wallets are supported
+			Known issue: Items in containers inside the player inventory don't work right
+			Plan to add Medicine soon
+
+Version 0.1.0
+	Complete incompatibility with previous versions due to core rewrite of how MamaMod works.
+		No longer adds code directly to the original classes or methods unless absolutely required
+		Injects extended classes onto objects that use them. Should be possible to disable them completely at some point without deleting MamaMod
+		External configs will be easier to support for various options.
+	Vending Machines can no longer be robbed. (No longer possible with new system)
+
+Version 0.0.10
+    MamaMod will enable debugging if the Mod MamaMod_Debug_MODPKG is loaded
+    Removed all savegame name methods of debugging.
+
+Version 0.0.9
+    MamaMod will check if the MamaMod_MODKPG has been loaded and adjust her functions as needed to stay compatible
+    Doors that can never be opened or shops that can never be robbed now clarify this is the case to avoid confusion (WIP commune doors)
+    Shops of "buyier" type can no longer be robbed. (They always have an empty inventory anyway)
+    Changed target of items dropped by robbing to be player instead of the shop object.
+
+Version 0.0.8
+    Vending Machines can now be robbed. Add the extra "vending_machine_robbery" to any shop to treat it like a vending machine
+    Fixed a bug with robbing multiple stores (or the same store multiple times) simultaneously
+        This issue exists in vanilla but isn't a problem since robberies drop the entire store's inventory
+    Added IsRobbableVendingMachine() to MamaMod and updated ShopArchetipusManager to use it
+    Vending machines in vanilla have been given the "vending_machine_robbery" extra in the new "MamaMod_MODPKG"
+
+Version 0.0.7
+    Added a new infopanel object to MamaMod to allow messages without using the playerUI
+    Added Announce() to MamaMod to return version and debug info
+
+Version 0.0.6
+    Standarized all mod functions into the MamaMod class
+        MamaMod_Debug boolean
+        GetPlayerInstance()
+        PlayerExists()
+        SpawnNewItemAtPlayer()+overloads
+        InfoPanelMessage()
+
+Version 0.0.5
+    Values adjusted for DropRobberyItems to favor fewer items dropped after a robbery
+
+Version 0.0.4
+    Robbing a shop uses a new method to determine what items the player recieves (ShopInventory.DropRobberyItems)
+
+
+Version 0.0.3
+    Player cannot shop at stores until "caught_stealing_effect" is removed (1 game hour default)
+    Removed scandal limit on shopping
+
+Version 0.0.2
+    Debug mode added (all stats maintained and the phone booth drops a crowbar)
+    Debug mode is enabled/disabled via the save menu
+    Player cannot shop at stores with more than 50 scandal
+
+Version 0.0.1
+    Lowered Pickpocket reward
+    Getting caught stealing from a shop forces the shop window closed
