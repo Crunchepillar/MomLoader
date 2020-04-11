@@ -15,7 +15,36 @@ namespace MomLoader
         //***** All Mods List *****//
         private static List<ModContainer> AllMods = new List<ModContainer>();
 
-        //TODO: Getter for loaded status of specific mod name
+        //Used to lock out unsafe functions during constructors
+        private static bool SafeUpdate;
+
+        /// <summary>
+        /// Returns the modinfo string for a loaded mod, assuming it is loaded.
+        /// returns null if the mod isn't loaded. Do not use this function in
+        /// a mod constructor. Restrict checking for mods until after SafeSetup
+        /// is called.
+        /// </summary>
+        /// <returns>ModInfo container</returns>
+        /// <param name="assemblyName">Case-Sensitive name of the dll</param>
+        public static ModContainer.ModInfo GetModLoaded(string assemblyName)
+        {
+
+            if (!SafeUpdate)
+            {
+                Utils.Log($"Unsafe call to GetModLoaded", "Warning");
+                return null;
+            }
+
+            foreach (ModContainer mod in AllMods)
+            {
+                if (!(mod.GetModInfo.AssemblyName == assemblyName))
+                    continue;
+
+                return mod.GetModInfo;
+            }
+
+            return null;
+        }
 
         //***** Begin Mod Registration *****//
         private static List<ModContainer> UpdateOnTick = new List<ModContainer>();
@@ -25,6 +54,11 @@ namespace MomLoader
         public static void RegisterForTickUpdate(ModContainer mod) { UpdateOnTick.Add(mod); }
         public static void RegisterForNewGameUpdate(ModContainer mod) { UpdateOnNewGame.Add(mod); }
         public static void RegisterForPlayerSpawnUpdate(ModContainer mod) { UpdateOnPlayerSpawn.Add(mod); }
+
+        public static void RemoveFromTickUpdate(ModContainer mod) { UpdateOnTick.Remove(mod); }
+        public static void RemoveFromNewGameUpdate(ModContainer mod) { UpdateOnNewGame.Remove(mod); }
+        public static void RemoveFromPlayerSpawnUpdate(ModContainer mod) { UpdateOnPlayerSpawn.Remove(mod); }
+
 
         //***** Begin Override Services *****//
         private static Dictionary<string, ModContainer> OverrideServices = new Dictionary<string, ModContainer>();
@@ -82,10 +116,10 @@ namespace MomLoader
 
         public static string LoaderVersion
         {
-            get => "0.0.3";
+            get => "0.0.4";
         }
 
-        private static bool OneTimeSetup = false;
+        private static bool OneTimeSetup;
 
         /// <summary>
         /// Exported hook. Do not use.
@@ -143,6 +177,7 @@ namespace MomLoader
                     continue;
 
                 //Update the ModList
+                ((ModContainer)ModInstance).GetModInfo.AssemblyName = typeName.Replace(".ModMain", "");
                 AllMods.Add((ModContainer)ModInstance);
             }
 
@@ -190,6 +225,9 @@ namespace MomLoader
         /// </summary>
         public static void OnBaseModsDoneLoading()
         {
+            //Unlock unsafe functions now that everything is loaded up
+            SafeUpdate = true;
+
             foreach (ModContainer mod in AllMods)
             {
                 mod.SafeSetup();

@@ -23,6 +23,7 @@ namespace MomLoader
             public readonly string ModName;
             public readonly string ModAuthor;
             public readonly string ModVersion;
+            public string AssemblyName;
             public string QualifiedModName
             {
                 get => $"{ModName} [{ModVersion}] by {ModAuthor}";

@@ -47,10 +47,13 @@
       <HintPath>..\lib\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MomLoader">
-      <HintPath>..\lib\MomLoader.dll</HintPath>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MomLoader\MomLoader.csproj">
+      <Project>{4C05DA4C-8718-4BC5-9E0D-870041435CA6}</Project>
+      <Name>MomLoader</Name>
       <Private>False</Private>
-    </Reference>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
