@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>UseableItems</RootNamespace>
     <AssemblyName>UseableItems</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,18 +40,17 @@
     <Compile Include="ModMain.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MomLoader\MomLoader.csproj">
-      <Project>{4C05DA4C-8718-4BC5-9E0D-870041435CA6}</Project>
-      <Name>MomLoader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HardTimesProj\HardTimes.csproj">
-      <Project>{AFB860E5-21E1-404E-89D8-89C2A6692598}</Project>
-      <Name>HardTimes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\lib\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MomLoader">
+      <HintPath>..\lib\MomLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
