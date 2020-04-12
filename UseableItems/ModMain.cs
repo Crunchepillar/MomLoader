@@ -7,7 +7,7 @@ namespace UseableItems
 {
     public class ModMain : ModContainer
     {
-        public ModMain() : base("Shop Manager", "Lovely Mama", "0.0.1")
+        public ModMain() : base("Useable Items", "Lovely Mama", "0.0.1")
         {
 
             QTLoader.RegisterItemOverrideService(this);
