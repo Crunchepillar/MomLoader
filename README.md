@@ -22,25 +22,9 @@ Q: I actually don't like (Whatever Mod) How do I stop MomLoader from loading tha
 
 A: MomLoader doesn't search for DLLs recursively so you can just move them inside another folder in your Mod/Assemblies folder and it won't be loaded. If you're sure you won't want a specific DLL loaded ever again you can also just delete it.
 
-# MomLoader ChangeLog
+# MomLoader Latest:
 
-## MomLoader Version 0.0.4
 * Added AssemblyName field to ModInfo which contains the name of the loaded assembly without the ".dll"
 * Added function GetModLoaded to get if a specific mod is loaded
     * Pass the AssemblyName of a Mod returns the Mod's ModInfo or null
 * Added functions to Remove a mod's registration from any of the update types
-
-## MomLoader Version 0.0.3
-* Added two new types of Events: Workers and Services
-    * Services take over the creation of base classes (eg: BaseItem or Shop) to modify its properties or even return a totally new object
-    * Workers modify any new instances of a base class but cannot replace it while working
-    * Supported Services: BaseItem, Shop
-    * Supported Workers: BaseItem, Shop, BaseNPCManager, BaseCopManager
-        * Note: Mods can request to be Workers for any type and emit a request for Workers of any type
-
-## MomLoader Version 0.0.2
-* Loads all Assemblies in the Mods/Assemblies folder and activates a new instance of (dllName).ModMain
-* Mods register for which updates they want to recieve from the base game and are passed data relevant to that update
-    * UpdateOnNewGame Added - Updates when a new game is started either from "New Game" or "Load Game"
-	* UpdateOnPlayerSpawn Added - Updates when a player is spawned and runs MonoBehavior:Start(), provides a PlayerManager instance to the player
-    * UpdateOnTick Added - Updates every time the player calls CheckDay(), which is a Unity Invoke() run about every 6 seconds
