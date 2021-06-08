@@ -1,9 +1,13 @@
 # Project Overview:
 MomLoader is an assembly loader for the game Hard Times on steam. It patches some functions in the main Assembly-CSharp to add in an event-driven framework that can dynamically load assemblies from the mod directory without interfering with the existing data-driven mod structure.
 
+Note: MomLoader was written before I learned a number of best practices. The code here isn't really even good for educational purposes. A noteable example would be that I exposed an empty class to be the ModMain class rather than an interface which would work MUCH better. A second example is how the main AssemblyCsharp.dll needed to be replaced with one compiled to work with MomLoader rather than patched in with something like harmony to keep it more compatible.
+
 https://github.com/Crunchepillar/MomLoader
 
 # Installation
+
+# Warning: MomLoader is extremely out of date. Do not use.
 
 Installing MomLoader is a quick process.
 
